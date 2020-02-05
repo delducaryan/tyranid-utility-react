@@ -5,34 +5,18 @@ import {
   Route,
   Switch
 } from "react-router-dom";
+import NavBar from "../NavBar";
 
 export default function RouterView() {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <NavLink exact to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/test">Test</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about">About</NavLink>
-          </li>
-        </ul>
-      </div>
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <p>Homepage</p>
         </Route>
         <Route path="/test">
           <p>Test</p>
-        </Route>
-        <Route path="/about">
-          <p>About</p>
         </Route>
       </Switch>
     </Router>

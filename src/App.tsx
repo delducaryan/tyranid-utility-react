@@ -3,7 +3,6 @@ import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import createPalette from "@material-ui/core/styles/createPalette";
-import NavbarComponent from "./components/NavBar";
 import RouterComponent from "./components/Router";
 
 import * as firebase from "firebase/app";
@@ -31,7 +30,6 @@ const App: FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <NavbarComponent />
       <RouterComponent />
     </ThemeProvider>
   );

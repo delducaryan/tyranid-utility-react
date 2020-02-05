@@ -7,6 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles({
   fullList: {
@@ -25,7 +26,7 @@ const NavDrawer: FC<{ isOpen: boolean; toggleDrawer: () => void }> = props => {
     <Drawer open={isOpen} onClose={toggleDrawer}>
       <div className={classes.list} onClick={toggleDrawer}>
         <List>
-          <ListItem button key="test">
+          <ListItem button component={NavLink} to="/test" key="test">
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>

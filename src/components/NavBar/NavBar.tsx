@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
-import NavDrawer from "./NavDrawer.component";
+import NavDrawer from "./NavDrawer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const NavbarView: FC = () => {
+const Navbar: FC = () => {
   const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -54,4 +54,4 @@ const NavbarView: FC = () => {
   );
 };
 
-export default NavbarView;
+export default Navbar;
