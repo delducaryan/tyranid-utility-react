@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Route,
+  Switch
+} from "react-router-dom";
 
 export default function RouterView() {
   return (
@@ -7,10 +12,15 @@ export default function RouterView() {
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink exact to="/">
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/test">Test</Link>
+            <NavLink to="/test">Test</NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">About</NavLink>
           </li>
         </ul>
       </div>
@@ -20,6 +30,9 @@ export default function RouterView() {
         </Route>
         <Route path="/test">
           <p>Test</p>
+        </Route>
+        <Route path="/about">
+          <p>About</p>
         </Route>
       </Switch>
     </Router>

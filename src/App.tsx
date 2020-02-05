@@ -1,6 +1,10 @@
-import React from "react";
-import "./App.css";
-import RouterComponent from "./components/router";
+import React, { FC } from "react";
+import { CssBaseline } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/core/styles";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import createPalette from "@material-ui/core/styles/createPalette";
+import NavbarComponent from "./components/NavBar";
+import RouterComponent from "./components/Router";
 
 import * as firebase from "firebase/app";
 
@@ -17,8 +21,20 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const App: React.FC = () => {
-  return <RouterComponent />;
+const theme = createMuiTheme({
+  palette: createPalette({
+    type: "dark"
+  })
+});
+
+const App: FC = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <NavbarComponent />
+      <RouterComponent />
+    </ThemeProvider>
+  );
 };
 
 export default App;
