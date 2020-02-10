@@ -4,7 +4,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import createPalette from "@material-ui/core/styles/createPalette";
 import RouterComponent from "./components/Router";
-import firebase from "./FirebaseConfig";
 
 const theme = createMuiTheme({
   palette: createPalette({

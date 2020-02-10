@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Route,
-  Switch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "../NavBar";
+import { Books } from "./routes";
 
 export default function RouterView() {
   return (
@@ -15,8 +11,8 @@ export default function RouterView() {
         <Route exact path="/">
           <p>Homepage</p>
         </Route>
-        <Route path="/test">
-          <p>Test</p>
+        <Route path="/books">
+          <Books />
         </Route>
       </Switch>
     </Router>

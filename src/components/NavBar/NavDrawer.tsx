@@ -8,6 +8,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import ListIcon from "@material-ui/icons/List";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -33,11 +34,11 @@ const NavDrawer: FC<{ isOpen: boolean; toggleDrawer: () => void }> = props => {
             </ListItemIcon>
             <ListItemText primary="Home"></ListItemText>
           </ListItem>
-          <ListItem button component={NavLink} to="/test" key="test">
+          <ListItem button component={NavLink} to="/books" key="books">
             <ListItemIcon>
-              <ListIcon />
+              <MenuBookIcon />
             </ListItemIcon>
-            <ListItemText primary="Test"></ListItemText>
+            <ListItemText primary="Books"></ListItemText>
           </ListItem>
         </List>
       </div>
