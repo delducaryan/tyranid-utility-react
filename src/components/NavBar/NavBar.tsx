@@ -44,7 +44,7 @@ const Navbar: FC = () => {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6">
-            Tyranid Roster Manager
+            Roster Manager
           </Typography>
           <Button>Right Side</Button>
         </Toolbar>
