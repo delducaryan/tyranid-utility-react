@@ -34,7 +34,7 @@ const Navbar: FC = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar>
           <IconButton
             className={classes.menuButton}
