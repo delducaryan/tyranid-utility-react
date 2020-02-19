@@ -13,7 +13,6 @@ const Main: FC = () => {
           <List />
         </Route>
         <Route path={`${match.path}/add`}>
-          <List />
           <Add />
         </Route>
       </Switch>

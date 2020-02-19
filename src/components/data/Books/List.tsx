@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Collapse from "@material-ui/core/Collapse";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -24,10 +25,10 @@ import Book from "models/Book";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      width: "100%",
+    list: {
+      backgroundColor: theme.palette.background.paper,
       maxWidth: 360,
-      backgroundColor: theme.palette.background.paper
+      width: "100%"
     }
   })
 );
@@ -43,9 +44,26 @@ const List: FC = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   useEffect(() => {
-    const observer = collection.onSnapshot(snapshot =>
-      setDocs(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Book)))
-    );
+    const observer = collection.onSnapshot(snapshot => {
+      const collection = snapshot.docs.map(
+        doc => ({ id: doc.id, ...doc.data() } as Book)
+      );
+
+      collection.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+
+        if (nameA > nameB) {
+          return 1;
+        } else if (nameA < nameB) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+
+      setDocs(collection);
+    });
 
     return () => observer();
   }, []);
@@ -73,20 +91,35 @@ const List: FC = () => {
   return (
     <>
       <MuiList
-        className={classes.root}
-        subheader={<ListSubheader>Books</ListSubheader>}
+        className={classes.list}
+        subheader={
+          <ListSubheader>
+            Books
+            <Divider />
+          </ListSubheader>
+        }
       >
-        <Divider />
         <div>
           {docs.map((doc, i) => (
-            <ListItem divider key={i}>
-              <ListItemText primary={doc.name} />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" onClick={() => clickDelete(i)}>
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
+            <div key={i}>
+              <ListItem
+                button
+                divider={selectedId !== i}
+                onClick={() => setSelectedId(i)}
+              >
+                <ListItemText primary={doc.name} />
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" onClick={() => clickDelete(i)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+              <Collapse in={selectedId === i}>
+                <ListItem divider>
+                  <ListItemText primary={"Temp"} />
+                </ListItem>
+              </Collapse>
+            </div>
           ))}
         </div>
       </MuiList>
